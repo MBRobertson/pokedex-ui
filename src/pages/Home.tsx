@@ -12,6 +12,13 @@ export const Home: React.FC = () => {
 
   const filter = useInput();
 
+  const filteredPokemon = useMemo(() => {
+    const filterText = filter.value;
+    if (!pokemon || !filterText) return pokemon;
+
+    return pokemon.filter(p => p.name.toLocaleLowerCase().indexOf(filterText) !== -1)
+  }, [pokemon, filter.value]);
+
   // If the API returned an error, prompt the user to retry
   if (error) return <div className="flex flex-col items-center justify-center w-screen h-screen gap-6">
     <h1 className="text-3xl font-bold text-zinc-200">Failed to load Pokemon</h1>
@@ -21,13 +28,6 @@ export const Home: React.FC = () => {
       Retry
     </button>
   </div>
-
-  const filteredPokemon = useMemo(() => {
-    const filterText = filter.value;
-    if (!pokemon || !filterText) return pokemon;
-
-    return pokemon.filter(p => p.name.toLocaleLowerCase().indexOf(filterText) !== -1)
-  }, [pokemon, filter.value]);
 
   return <Container>
     <div className="flex flex-col p-8 gap-4">
