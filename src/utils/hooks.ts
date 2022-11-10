@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
+import { SITE_TITLE } from "../config";
 
 type AsyncFunction<A extends never[], O> = (...args: A) => Promise<O>
 
@@ -45,4 +46,16 @@ export const useInput = (initialValue?: string) => {
   }, [])
 
   return { value, onChange };
+}
+
+/**
+ * Overwrite the document title
+ * @param title
+ */
+export const useTitle = (title: string) => {
+  useEffect(() => {
+    const lastTitle = document.title;
+    document.title = `${title} - ${SITE_TITLE}`;
+    return () => { document.title = lastTitle }
+  }, [title]);
 }

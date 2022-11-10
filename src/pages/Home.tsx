@@ -2,9 +2,11 @@ import { useMemo } from "react";
 import { useAllPokemon } from "../api";
 import { Container } from "../components/layout/Container";
 import { PokemonListItem } from "../components/PokemonListItem";
-import { useInput } from "../utils/hooks";
+import { useInput, useTitle } from "../utils/hooks";
 
 export const Home: React.FC = () => {
+  useTitle('My Pokedex');
+
   const [pokemon, loading, error, retry] = useAllPokemon();
   const ready = !loading && pokemon;
 

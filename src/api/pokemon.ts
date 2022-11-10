@@ -1,8 +1,8 @@
 import axios from "axios";
+import { API_ROOT } from "../config";
 import { wrapAsync } from "../utils/hooks";
 import { Link, Page, Pokemon } from "./types";
 
-const API_ROOT = 'https://pokeapi.co/api/v2';
 const DEFAULT_LIMIT = 150;
 
 export const getAllPokemon = async (limit?: number) => {
