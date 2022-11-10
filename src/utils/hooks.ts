@@ -1,5 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
-import { Page } from "./types";
+import React, { useState, useCallback, useEffect } from "react";
 
 type AsyncFunction<A extends never[], O> = (...args: A) => Promise<O>
 
@@ -31,4 +30,19 @@ export const wrapAsync = <P extends never[], R, T extends AsyncFunction<P, R>>(f
 
     return [value, loading, error, fetch] as const
   }
+}
+
+/**
+ * Simple state store for use in a text input field
+ * @param initialValue Optional initial value for the input
+ * @returns Props to be applied to an input
+ */
+export const useInput = (initialValue?: string) => {
+  const [value, setValue] = useState(initialValue);
+
+  const onChange: React.ChangeEventHandler<HTMLInputElement> = useCallback(e => {
+    setValue(e.target.value);
+  }, [])
+
+  return { value, onChange };
 }

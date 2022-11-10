@@ -1,6 +1,6 @@
 import axios from "axios";
+import { wrapAsync } from "../utils/hooks";
 import { Link, Page, Pokemon } from "./types";
-import { wrapAsync } from "./utils";
 
 const API_ROOT = 'https://pokeapi.co/api/v2';
 const DEFAULT_LIMIT = 150;
