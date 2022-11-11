@@ -7,17 +7,18 @@ export interface Page<T> {
 
 // Many API values are partial types with a link pointing to the full result
 export interface Link {
-  url: string;
-}
-
-export interface Type {
   name: string;
-  // Only typing the properties we are interested in
+  url: string;
 }
 
 export interface Pokemon {
   id: number;
   name: string;
-  types: { slot: number, type: Pick<Type, 'name'> & Link }[];
+  types: { slot: number, type: Link }[];
+  abilities: { slot: number, is_hidden: boolean, ability: Link }[];
+  forms: Link[];
+  game_indices: { game_index: number, version: Link }[];
+  moves: { move: Link }[];
+  stats: { base_stat: number, effort: number, stat: Link }[];
   // Only typing the properties we are interested in
 }

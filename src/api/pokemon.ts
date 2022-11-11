@@ -8,7 +8,7 @@ const DEFAULT_LIMIT = 150;
 export const getAllPokemon = async (limit?: number) => {
   if (!limit) limit = DEFAULT_LIMIT;
 
-  const response = await axios.get<Page<Pick<Pokemon, 'name'> & Link>>(`${API_ROOT}/pokemon?limit=${limit}`);
+  const response = await axios.get<Page<Link>>(`${API_ROOT}/pokemon?limit=${limit}`);
 
   // Sort pokename names alphabetically
   response.data.results.sort((a, b) => a.name.localeCompare(b.name));
