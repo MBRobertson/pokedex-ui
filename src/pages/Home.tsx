@@ -1,15 +1,19 @@
 import { useMemo } from "react";
 import { useAllPokemon } from "../api";
 import { Container } from "../components/Container";
-import { PokemonListItem } from "../components/PokemonListItem";
+import { PokemonLink } from "../components/PokemonLink";
 import { useInput, useTitle } from "../utils/hooks";
 
+/**
+ * Pokedex Homepage displaying the the names of the top 150 Pokemon
+ */
 export const Home: React.FC = () => {
   useTitle('My Pokedex');
 
   const [pokemon, loading, error, retry] = useAllPokemon();
   const ready = !loading && pokemon;
 
+  // Filter the pokemon by a substring match on text input
   const filter = useInput();
 
   const filteredPokemon = useMemo(() => {
@@ -42,7 +46,7 @@ export const Home: React.FC = () => {
           : filteredPokemon?.length === 0
             ? <span className="text-xl font-bold text-rose-200">No Pokemon match filter</span>
             : <ul className="flex flex-wrap gap-2">
-                {filteredPokemon?.map(p => <PokemonListItem key={p.name} name={p.name} />)}
+                {filteredPokemon?.map(p => <PokemonLink key={p.name} name={p.name} />)}
               </ul>
       }
     </div>

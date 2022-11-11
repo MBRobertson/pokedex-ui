@@ -12,12 +12,17 @@ const HomeLink = () =>
       My Pokedex
   </Link>
 
+/**
+ * Display detailed information on a specific pokemon
+ * Pokemon name is taken from the current url
+ */
 export const PokemonDetails: React.FC = () => {
   const { pokemon } = useParams();
   const [pokemonData, loading, error] = usePokemon(pokemon ?? '');
   const ready = !loading && !error && pokemonData;
 
-  const title = capitalize(pokemonData?.name ?? pokemon ?? 'Unkown')
+  // API always returns lower case, and can't use text-transform in the title
+  const title = capitalize(pokemonData?.name ?? pokemon ?? 'Unknown')
   useTitle(title);
 
   if (error) return <div className="flex flex-col items-center justify-center w-screen h-screen gap-6">
