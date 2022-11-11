@@ -6,7 +6,7 @@ View at [https://mbrobertson.github.io/pokedex-ui/](https://mbrobertson.github.i
 
 ## Getting Started
 
-Built with Vite/React/Typescript, tested with latest Node. To run locally:
+Built with Vite/React/Typescript using TailwindCSS for styles, tested with latest Node. To run locally:
 
 ```bash
 git clone https://github.com/MBRobertson/pokedex-ui.git
