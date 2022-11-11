@@ -20,7 +20,7 @@ export const Home: React.FC = () => {
     const filterText = filter.value;
     if (!pokemon || !filterText) return pokemon;
 
-    return pokemon.filter(p => p.name.toLocaleLowerCase().indexOf(filterText) !== -1)
+    return pokemon.filter(p => p.name.toLocaleLowerCase().indexOf(filterText.toLocaleLowerCase()) !== -1)
   }, [pokemon, filter.value]);
 
   // If the API returned an error, prompt the user to retry
