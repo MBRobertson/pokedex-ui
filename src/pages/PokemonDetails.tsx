@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { usePokemon } from "../api";
-import { Container } from "../components/layout/Container";
+import { Container } from "../components/Container";
 import { StatCard } from "../components/StatCard";
 import { useTitle } from "../utils/hooks";
 import { capitalize } from "../utils/text";

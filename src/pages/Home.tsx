@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useAllPokemon } from "../api";
-import { Container } from "../components/layout/Container";
+import { Container } from "../components/Container";
 import { PokemonListItem } from "../components/PokemonListItem";
 import { useInput, useTitle } from "../utils/hooks";
 
